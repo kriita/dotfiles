@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/kriita/.oh-my-zsh"
@@ -110,9 +110,10 @@ eval "$(rbenv init -)"
 alias tddd95="cd ~/Dropbox/Skola/LiU/TDDD95"
 alias tbmi26="cd ~/Dropbox/Skola/LiU/TBMI26"
 alias vvp="cd ~/Dropbox/VVP"
-alias ships="cd ~/Dropbox/Jobb/2021\ Sjöfartsverket"
+alias jobb="cd ~/Dropbox/Jobb/2021\ HCS/"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"

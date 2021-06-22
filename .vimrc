@@ -1,3 +1,13 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+""" VUNDLE
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'ycm-core/YouCompleteMe'
+call vundle#end()
+
 """ VIM PLUG
 
 call plug#begin('~/.vim/plugged')
@@ -35,6 +45,6 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set number
+set nu
 set rnu
 
