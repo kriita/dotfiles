@@ -47,4 +47,4 @@ set softtabstop=2
 set shiftwidth=2
 set nu
 set rnu
-
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
