@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/kriita/.oh-my-zsh"
+export ZSH="/home/kriita/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,12 +100,6 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-## PYTHON SETUP
-eval "$(pyenv init -)"
-
-## RUBY SETUP
-eval "$(rbenv init -)"
-
 ## Directory shortcuts 
 alias tddd95="cd ~/Dropbox/Skola/LiU/TDDD95"
 alias tbmi26="cd ~/Dropbox/Skola/LiU/TBMI26"
@@ -117,3 +111,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+
