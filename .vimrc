@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 """ VUNDLE
 call vundle#begin()
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
@@ -18,6 +19,8 @@ autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a preview'
 
 " Other plugins
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'turbio/bracey.vim'
 Plug 'vim-syntastic/syntastic'
@@ -41,6 +44,7 @@ let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy']
 
 """ GENERAL
 filetype plugin indent on
+
 set expandtab
 set tabstop=2
 set softtabstop=2
