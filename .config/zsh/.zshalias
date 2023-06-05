@@ -8,7 +8,7 @@ alias zshalias="nvim ~/.config/zsh/.zshalias"
 alias zshenv="nvim ~/.config/zsh/.zshenv"
 
 # Vim
-alias vimrc="nvim ~/.vimrc"
+alias vimrc="nvim ~/.config/init.vim"
 
 # Syntastic sugar for ls
 alias ls="lsd"

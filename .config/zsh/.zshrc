@@ -10,12 +10,24 @@ setopt numericglobsort
 # Do not beep
 setopt nobeep
 
+# Start Homebrew
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # Start pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Start rbenv
 eval "$(rbenv init -)"
+
+# Load zsh-auto-completion
+source /Users/kriita/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Load aliases
 source $ZDOTDIR/.zshalias
