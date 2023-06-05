@@ -1,5 +1,13 @@
+# This is Git's per-user configuration file.
 [user]
-	name = Filip Jaredson
+	name = kriita
 	email = thordask@gmail.com
-[push]
-	default = simple
+# Adapt and uncomment the following lines for studies:
+#	name = Filip Jaredson
+#	email = filja057@student.liu.se
+[color]
+	ui = true
+[pull]
+	rebase = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
