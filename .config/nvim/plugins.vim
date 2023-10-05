@@ -1,6 +1,12 @@
 " Indent li and p tags properly
 let g:html_indent_tags = 'li\|p'
 
+" ALE
+let g:ale_fixers = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'javascript': ['eslint'],
+      \}
+
 " Ruby indents
 let g:ruby_indent_assignment_style = 'variable'
 

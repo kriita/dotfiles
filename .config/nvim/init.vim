@@ -50,6 +50,7 @@ Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn in
 if has('nvim-0.5')
 
   """ SYNTAX HIGHLIGHTING AND FORMATTING
+  Plug 'dense-analysis/ale' " Provdes linting
   Plug 'nvim-treesitter/nvim-treesitter' " Builds syntax tree based on source code
   Plug 'sbdchd/neoformat' " Formats code
 
