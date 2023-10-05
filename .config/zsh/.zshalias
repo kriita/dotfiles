@@ -8,7 +8,10 @@ alias zshalias="nvim ~/.config/zsh/.zshalias"
 alias zshenv="nvim ~/.config/zsh/.zshenv"
 
 # Vim
-alias vimrc="nvim ~/.config/init.vim"
+alias vimrc="nvim ~/.config/nvim"
+
+# G++ flags
+alias compile_strict="g++ -std=c++20 -Wall -Wextra -Werror -Wshadow -Wno-reorder -Wno-unused-parameter -Wnon-virtual-dtor -pedantic -pedantic-errors"
 
 # Syntastic sugar for ls
 alias ls="lsd"
@@ -37,3 +40,6 @@ alias gckb="git checkout -b"
 alias gsw="git switch"
 alias gswc="git switch --create"
 alias gsh="git show"
+
+# Ctags
+alias ctags="`brew --prefix`/bin/ctags"

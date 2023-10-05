@@ -72,3 +72,4 @@ fi
 
 # Export PATH
 export PATH
+. "$HOME/.cargo/env"

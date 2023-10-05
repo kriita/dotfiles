@@ -10,6 +10,22 @@ setopt numericglobsort
 # Do not beep
 setopt nobeep
 
+# Case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Partial match highlighting
+zstyle -e ':completion:*:default' list-colors \
+  'reply=("${PREFIX:+=(#bi)($PREFIX:t)()*==34=34}:${(s.:.)LS_COLORS}")'
+
+# History
+setopt append_history         # Append, not replace
+setopt inc_append_history     # Immediately append history
+setopt hist_ignore_dups       # Do not show dupes in history
+setopt hist_ignore_space      # Ignore commands starting with space
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.history
+
 # Start Homebrew
 if type brew &>/dev/null
 then
