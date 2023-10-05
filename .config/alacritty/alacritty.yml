@@ -35,3 +35,26 @@ colors:
 font:
   normal:
     family: RobotoMono Nerd Font
+
+window:
+  padding:
+    x: 2
+    y: 2
+  dynamic_padding: true
+  decorations: full
+  dynamic_title: true
+
+draw_bold_text_with_bright_colors: false
+
+live_config_reload: true
+
+alt_sent_esc: true
+
+hints:
+  enabled:
+  - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+            [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+    command: open
+    post_processing: true
+    mouse:
+      enabled: true
