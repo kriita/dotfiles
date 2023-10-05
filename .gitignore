@@ -3,3 +3,4 @@
 .config/nvim/undo/*
 .config/zsh/.zcompdump
 .config/zsh/.zsh_history
+node_modules
