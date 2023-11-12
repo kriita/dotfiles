@@ -1,8 +1,13 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZDOTDIR=~/.config/zsh
+export ZSH_THEME="robbyrussell"
 
 export GITROOT="~/git"
+export TSKS33_HT23="~/Dropbox/Skola/LiU/TSKS33/ht2023"
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
@@ -23,6 +28,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 # PyEnv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Postgres@14
 export PATH="${HOMEBREW_PREFIX}/opt/postgresql@14/bin:$PATH"

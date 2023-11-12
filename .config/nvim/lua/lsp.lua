@@ -19,7 +19,7 @@ require("mason-lspconfig").setup()
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { 'clangd', 'docker_compose_language_service', 'dockerls', 'jsonls', 'pyright', 'yamlls' }
+local servers = { 'docker_compose_language_service', 'dockerls', 'jsonls', 'pyright', 'yamlls' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

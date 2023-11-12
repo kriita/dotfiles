@@ -35,10 +35,6 @@ then
   compinit
 fi
 
-# Start pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # Start rbenv
 eval "$(rbenv init -)"
 
@@ -63,3 +59,4 @@ bindkey "^E" end-of-line
 bindkey "^B" backward-word
 # Map Ctrl+f to move to the next word
 bindkey "^F" forward-word
+
