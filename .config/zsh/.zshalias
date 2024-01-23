@@ -6,6 +6,7 @@ alias zshconfig="nvim ~/.config/zsh/.zshrc"
 alias zshfunctions="nvim ~/.config/zsh/custom-functions.sh"
 alias zshalias="nvim ~/.config/zsh/.zshalias"
 alias zshenv="nvim ~/.config/zsh/.zshenv"
+alias zprofile="nvim ~/.config/zsh/.zprofile"
 
 # Vim
 alias vimrc="nvim ~/.config/nvim"
@@ -14,8 +15,8 @@ alias vimrc="nvim ~/.config/nvim"
 alias compile_strict="g++ -std=c++20 -Wall -Wextra -Werror -Wshadow -Wno-reorder -Wno-unused-parameter -Wnon-virtual-dtor -pedantic -pedantic-errors"
 
 # Syntastic sugar for ls
-alias ls="lsd"
 alias l="lsd -lh"
+alias ls="lsd"
 alias ll="lsd -lah"
 alias lls="lsd -Slah"
 alias llsr="lsd -Slahr"
