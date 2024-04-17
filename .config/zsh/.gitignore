@@ -1,0 +1,8 @@
+# Ignore .zshsessions - they are temporary files that are created when you start a new zsh session
+.zsh_sessions
+
+# Ignore .zsh_history - it is a file that stores the history of commands you have run in zsh
+.zsh_history
+
+# Ignore .zcompdump - it is a file that stores the completion cache for zsh
+.zcompdump
