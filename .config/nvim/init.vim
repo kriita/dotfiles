@@ -9,7 +9,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:python3_host_prog = $HOME.'/.neovim3/bin/python3'
+let g:python3_host_prog = $HOME.'/.pyenv/shims/python3'
 
 """ VIM PLUG
 call plug#begin('~/.vim/plugged')
@@ -35,6 +35,7 @@ Plug 'RRethy/vim-illuminate' " Automatic highlighting other uses of the word und
 
 """ LANGUAGES AND MARKUP
 Plug 'sheerun/vim-polyglot' " Language packs for most languages
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " Linting for JavaScript
 
 """ COLORS AND THEME
 " Plug 'itchyny/lightline.vim' " Status bar

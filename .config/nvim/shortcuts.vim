@@ -4,7 +4,7 @@ let mapleader = " "
 
 " FZF Rg to leader a (Ack)
 noremap <leader>a :Rg<CR>
-noremap <leader>f :Grepper<CR>
+noremap <leader>f :execute 'Rg '.@/<CR>
 
 " FZF Files to leader p
 noremap <C-p> :Files<cr>

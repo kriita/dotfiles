@@ -66,6 +66,7 @@ end
 local buttons = {
     type = "group",
     val = {
+        button("o", "- Open file", ":Files<cr>"),
         button("e", "- Explore", ":NERDTree<cr><C-w>w:q<cr>"),
         button("u", "- Update plugins", ":PlugInstall<cr>"),
         button("q", "- Quit", ":q!<cr>"),
