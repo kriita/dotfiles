@@ -1,17 +1,29 @@
-# This is Git's per-user configuration file.
 [user]
-	name = kriita
-	email = thordask@gmail.com
-# Adapt and uncomment the following lines for studies:
-#	name = Filip Jaredson
-#	email = filja057@student.liu.se
+  name = kriita
+  email = thordask@gmail.com
+
+[core]
+  editor = nvim
+  whitespace = fix,trailing-space,cr-at-eol
+  pager = delta
+
 [color]
-	ui = true
+  ui = true
+
+[diff]
+  tool = nvimdiff
+
+[difftool]
+  prompt = true
+
 [pull]
-	rebase = true
+  rebase = true
+
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
+
 [fetch]
-	prune = true
+  prune = true
+
 [alias]
-	delete-local-merged = "!git fetch && git branch --merged | egrep -v 'master|develop|main|staging'  | xargs git branch -d"
+  delete-local-merged = "!git fetch && git branch --merged | egrep -v 'master|develop|main|staging'  | xargs git branch -d"
