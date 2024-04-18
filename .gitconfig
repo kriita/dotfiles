@@ -11,3 +11,7 @@
 	rebase = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[fetch]
+	prune = true
+[alias]
+	delete-local-merged = "!git fetch && git branch --merged | egrep -v 'master|develop|main|staging'  | xargs git branch -d"
