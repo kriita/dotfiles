@@ -6,6 +6,9 @@ let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'javascript': ['eslint'],
       \}
+let g:ale_linters = {
+\   'cpp': ['bazel'],
+\}
 
 " Ruby indents
 let g:ruby_indent_assignment_style = 'variable'

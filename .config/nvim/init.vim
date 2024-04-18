@@ -1,7 +1,5 @@
 filetype off
 
-"set rtp+=~/.vim/bundle/Vundle.vim
-
 " Init Vim-Plug if not yet done
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -34,7 +32,6 @@ Plug 'junegunn/fzf.vim' " fzf and ripgrep integration
 Plug 'RRethy/vim-illuminate' " Automatic highlighting other uses of the word under the cursor
 
 """ LANGUAGES AND MARKUP
-Plug 'sheerun/vim-polyglot' " Language packs for most languages
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " Linting for JavaScript
 
 """ COLORS AND THEME
