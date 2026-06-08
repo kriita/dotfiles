@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # cd without using cd
 setopt autocd
 
@@ -36,15 +43,15 @@ then
 fi
 
 # Start rbenv
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # Load zsh-auto-completion
-source /Users/kriita/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /Users/kriita/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Load aliases
-source $ZDOTDIR/.zshalias
 # Initialize oh-my-zsh related things
 source $ZDOTDIR/.ohmyzsh
+# Load aliases
+source $ZDOTDIR/.zshalias
 # Load custom functions
 source $ZDOTDIR/custom-functions.sh
 
@@ -60,3 +67,7 @@ bindkey "^B" backward-word
 # Map Ctrl+f to move to the next word
 bindkey "^F" forward-word
 
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+. "$HOME/.local/bin/env"

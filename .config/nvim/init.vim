@@ -49,7 +49,7 @@ if has('nvim-0.5')
 
   """ SYNTAX HIGHLIGHTING AND FORMATTING
   Plug 'dense-analysis/ale' " Provdes linting
-  Plug 'nvim-treesitter/nvim-treesitter' " Builds syntax tree based on source code
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Builds syntax tree based on source code
   Plug 'sbdchd/neoformat' " Formats code
 
   """ LSP
@@ -71,9 +71,9 @@ if has('nvim-0.5')
   Plug 'hrsh7th/vim-vsnip' " VSCode(LSP)'s snippet feature
 
   """ COPILOT
-  Plug 'github/copilot.vim' " Suggest code and entire functions in real-time
-  Plug 'zbirenbaum/copilot-cmp' " Cmp source for zbirenbaum/copilot.lua
-  Plug 'zbirenbaum/copilot.lua' " Pure Lua replacement for github/copilot.vim
+  "  Plug 'github/copilot.vim' " Suggest code and entire functions in real-time
+  "  Plug 'zbirenbaum/copilot-cmp' " Cmp source for zbirenbaum/copilot.lua
+  "  Plug 'zbirenbaum/copilot.lua' " Pure Lua replacement for github/copilot.vim
 endif
 
 call plug#end()

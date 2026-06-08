@@ -1,9 +1,9 @@
 -- Setup copilot
-require("copilot").setup()
+--require("copilot").setup()
 
-require("copilot_cmp").setup {
-  method = "getCompletionsCycling",
-}
+--require("copilot_cmp").setup {
+--  method = "getCompletionsCycling",
+--}
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover,
@@ -43,7 +43,7 @@ cmp.setup {
       ['<CR>'] = cmp.mapping.confirm({ select = true }) -- Accept currently selected item. Set select to 'false' to only confirm explicitly selected items.
     }),
   sources = cmp.config.sources({
-      { name = 'copilot' },
+--      { name = 'copilot' },
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
       { name = 'nvim_lsp_signature_help' },

@@ -3,15 +3,10 @@
   email = <redacted>
 
 [core]
-  editor = nvim
   whitespace = fix,trailing-space,cr-at-eol
-  pager = delta
 
 [color]
   ui = true
-
-[diff]
-  tool = nvimdiff
 
 [difftool]
   prompt = true
