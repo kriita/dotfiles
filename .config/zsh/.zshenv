@@ -4,3 +4,4 @@ export ZDOTDIR=~/.config/zsh
 if [[ ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+. "$HOME/.cargo/env"
