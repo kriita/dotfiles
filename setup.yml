@@ -1,0 +1,185 @@
+---
+- name: Configure Local Workstation
+  hosts: localhost      # Run locally, not on a remote server
+  connection: local     # Don't try to SSH into localhost
+  gather_facts: true    # This tells Ansible to detect your OS, CPU, etc.
+
+  tasks:
+    # ---------------------------------------------------------
+    # 1. Package Management (The OS Split)
+    # ---------------------------------------------------------
+    - name: (macOS) Install core packages via Homebrew
+      ansible.builtin.homebrew:
+        name:
+          - git
+          - neovim
+          - lsd
+          - tmux
+          - fzf
+          - fd
+          - rbenv
+        state: present
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: (Linux) Install core packages via APT
+      ansible.builtin.apt:
+        name:
+          - git
+          - neovim
+          - lsd
+          - tmux
+          - fzf
+          - fd-find
+          - rbenv
+        state: present
+      become: true # This runs the task with sudo
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: (macOS) Install pynvim for Neovim via pip
+      ansible.builtin.pip:
+        name: pynvim
+        executable: pip3
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: (Linux) Install pynvim for Neovim via APT
+      ansible.builtin.apt:
+        name: python3-pynvim
+        state: present
+      become: true
+      when: ansible_facts['os_family'] == "Debian"
+
+    # ---------------------------------------------------------
+    # 2. Dotfile Symlinking
+    # ---------------------------------------------------------
+    - name: Ensure ~/.config directory exists
+      ansible.builtin.file:
+        path: "{{ ansible_facts['env']['HOME'] }}/.config"
+        state: directory
+        mode: '0755'
+
+    - name: Symlink root-level dotfiles
+      ansible.builtin.file:
+        src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/{{ item }}"
+        dest: "{{ ansible_facts['env']['HOME'] }}/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - .gitconfig
+        - .zshenv
+
+    - name: Symlink cross-platform config directories
+      ansible.builtin.file:
+        src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/.config/{{ item }}"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.config/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - alacritty
+        - nvim
+        - zsh
+
+    - name: (Linux) Symlink i3 directory
+      ansible.builtin.file:
+        src: "{{ ansible_facts['env']['HOME'] }}/git/dotfiles/.config/i3"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.config/i3"
+        state: link
+        force: true
+      when: ansible_facts['os_family'] in ["Debian", "RedHat"]
+
+    # ---------------------------------------------------------
+    # 3. ZSH Framework & Plugins (Git)
+    # ---------------------------------------------------------
+    - name: Clone Oh-My-Zsh repository
+      ansible.builtin.git:
+        repo: https://github.com/ohmyzsh/ohmyzsh.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
+        depth: 1
+        update: true
+
+    - name: Clone zsh-syntax-highlighting
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+        depth: 1
+        update: true
+
+    - name: Clone Powerlevel10k theme
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/powerlevel10k"
+        depth: 1
+        update: true
+        
+    - name: Clone Pyenv (Cross-Platform)
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.pyenv"
+        depth: 1
+        update: true
+
+    - name: Clone pyenv-virtualenv plugin
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv-virtualenv.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.pyenv/plugins/pyenv-virtualenv"
+        depth: 1
+        update: true
+
+    - name: Clone zsh-autosuggestions
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+        depth: 1
+        update: true
+
+    - name: Clone zsh-completions
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-completions.git
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/zsh-completions"
+        depth: 1
+        update: true
+
+    - name: Install Rust (rustup)
+      ansible.builtin.shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      args:
+        creates: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/rustc" # Makes this task idempotent!
+
+    # ---------------------------------------------------------
+    # 4. Fonts (Nerd Fonts for Terminal Icons)
+    # ---------------------------------------------------------
+    - name: (macOS) Install RobotoMono Nerd Font via Homebrew Cask
+      ansible.builtin.homebrew_cask:
+        name: font-roboto-mono-nerd-font
+        state: present
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: (Linux) Ensure local fonts directory exists
+      ansible.builtin.file:
+        path: "{{ ansible_facts['env']['HOME'] }}/.local/share/fonts"
+        state: directory
+        mode: '0755'
+      when: ansible_facts['os_family'] in ["Debian", "RedHat"]
+
+    - name: (Linux) Download and extract RobotoMono Nerd Font
+      ansible.builtin.unarchive:
+        src: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/RobotoMono.zip"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.local/share/fonts/"
+        remote_src: true
+      when: ansible_facts['os_family'] in ["Debian", "RedHat"]
+
+    - name: (Linux) Update font cache
+      ansible.builtin.command: fc-cache -fv
+      when: ansible_facts['os_family'] in ["Debian", "RedHat"]
+      changed_when: false # This tells Ansible not to mark this step as "changed" every single run, preserving idempotency
+
+    # ---------------------------------------------------------
+    # 5. Neovim Headless Setup
+    # ---------------------------------------------------------
+    - name: Install Neovim plugins via vim-plug
+      ansible.builtin.command: nvim --headless +PlugInstall +qa
+      changed_when: false
+      
+    - name: Install/Update Mason binaries
+      ansible.builtin.command: nvim --headless +MasonUpdate +qa
+      # If you need to install specific Mason packages explicitly, use this instead:
+      # ansible.builtin.command: nvim --headless "+MasonInstall pyright lua-language-server" +qa
+      changed_when: false
